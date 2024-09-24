@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debt Investment and Asset Analysis</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            transition: all 0.3s ease;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        label {
+            font-weight: 600;
+            color: #34495e;
+            transition: all 0.3s ease;
+        }
+        .form-group:hover label {
+            color: #3498db;
+            transform: translateX(5px);
+        }
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #bdc3c7;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+            transform: translateY(-3px);
+        }
+        .btn-primary {
+            background-color: #3498db;
+            border-color: #3498db;
+            font-weight: 600;
+            padding: 12px 25px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border-radius: 30px;
+        }
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .prediction-result {
+            background-color: #e8f4fd;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+        .prediction-result:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .prediction-result h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .prediction-result p {
+            font-size: 20px;
+            font-weight: 600;
+            color: #3498db;
+        }
+        .input-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #95a5a6;
+        }
+        .severity-indicator {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        .severity-indicator i {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        .btn-secondary {
+            background-color: #2ecc71;
+            border-color: #2ecc71;
+            font-weight: 600;
+            padding: 12px 25px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-secondary:hover {
+            background-color: #27ae60;
+            border-color: #27ae60;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container animate__animated animate__fadeIn">
+        <h1 class="animate__animated animate__bounceInDown">Debt Investment and Asset Analysis</h1>
+        <form method="POST">
+            <div class="form-group position-relative">
+                <label for="debt_asset_ratio">Debt Asset Ratio:</label>
+                <input type="number" step="0.01" class="form-control" id="debt_asset_ratio" name="debt_asset_ratio" placeholder="Range: 0.0 - 27.7" required>
+                <i class="fas fa-percent input-icon"></i>
+            </div>
+            <div class="form-group position-relative">
+                <label for="avg_amount_of_debt">Average Amount of Debt:</label>
+                <input type="number" step="0.01" class="form-control" id="avg_amount_of_debt" name="avg_amount_of_debt" placeholder="Range: 924 - 288,898" required>
+                <i class="fas fa-rupee-sign input-icon"></i>
+            </div>
+            <div class="form-group position-relative">
+                <label for="state_code">State Code:</label>
+                <input type="number" class="form-control" id="state_code" name="state_code" placeholder="Range: 1 - 36" required>
+                <i class="fas fa-map-marker-alt input-icon"></i>
+            </div>
+            <div class="form-group position-relative">
+                <label for="avg_value_assets">Average Value of Assets:</label>
+                <input type="number" step="0.01" class="form-control" id="avg_value_assets" name="avg_value_assets" placeholder="Range: 97,580 - 27,457,670" required>
+                <i class="fas fa-chart-line input-icon"></i>
+            </div>
+            <div class="form-group position-relative">
+                <label for="fxd_cap_exp">Fixed Capital Expenditure:</label>
+                <input type="number" step="0.01" class="form-control" id="fxd_cap_exp" name="fxd_cap_exp" placeholder="Range: 0 - 2,476,112" required>
+                <i class="fas fa-building input-icon"></i>
+            </div>
+            <div class="form-group position-relative">
+                <label for="hh_reporting_fxd_cap_exp">Households Reporting Fixed Capital Expenditure:</label>
+                <input type="number" step="0.01" class="form-control" id="hh_reporting_fxd_cap_exp" name="hh_reporting_fxd_cap_exp" placeholder="Range: 0 - 10,960,600" required>
+                <i class="fas fa-home input-icon"></i>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Predict</button>
+        </form>
+        {% if prediction is not none %}
+        <div class="prediction-result animate__animated animate__fadeInUp">
+            <h3>Prediction Result:</h3>
+            <p>The predicted incidence of indebtedness is: {{ prediction|round(2) }}</p>
+            <div class="severity-indicator">
+                {% if prediction <= 20 %}
+                    <i class="fas fa-smile" style="color: #2ecc71;"></i>
+                    <span style="color: #2ecc71;">Low Indebtedness (Good)</span>
+                {% elif prediction <= 40 %}
+                    <i class="fas fa-meh" style="color: #f39c12;"></i>
+                    <span style="color: #f39c12;">Moderate Indebtedness</span>
+                {% elif prediction <= 60 %}
+                    <i class="fas fa-frown" style="color: #e67e22;"></i>
+                    <span style="color: #e67e22;">High Indebtedness</span>
+                {% elif prediction <= 80 %}
+                    <i class="fas fa-dizzy" style="color: #e74c3c;"></i>
+                    <span style="color: #e74c3c;">Very High Indebtedness</span>
+                {% else %}
+                    <i class="fas fa-skull-crossbones" style="color: #c0392b;"></i>
+                    <span style="color: #c0392b;">Severe Indebtedness (Bad)</span>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+        <div class="button-container">
+            <a href="/visualizations" class="btn btn-secondary animate__animated animate__bounceIn">
+                <i class="fas fa-chart-bar"></i> View Data Visualizations
+            </a>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
